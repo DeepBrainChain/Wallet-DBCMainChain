@@ -6,7 +6,7 @@ const tinify = require('tinify');
 const fs = require('fs-extra');
 const path = require('path');
 
-tinify.key = '这里填秘钥';
+tinify.key = '这里填秘钥'; //
 const jsonForTiny = path.join(__dirname, 'cacheTiny.json');
 
 function writeSaveRecord (content) {
@@ -81,7 +81,7 @@ async function start (p) {
             await source.toFile(filePath);
             console.log(s, '成功了');
             console.log('压缩后大小为', formatBytes(fs.statSync(filePath).size).print);
-            writeSaveRecord(filePath);
+            writeSaveRecord(filePath.split('/apps/packages')[1]);
             successCount += 1;
           } catch (e) {
             console.log(s, '失败了');
