@@ -6,7 +6,7 @@ const tinify = require('tinify');
 const fs = require('fs-extra');
 const path = require('path');
 
-tinify.key = 'brjWm3GnLpjzzl1BQXxsWCYZpL6yz6g6';
+tinify.key = '这里填秘钥';
 const jsonForTiny = path.join(__dirname, 'cacheTiny.json');
 
 function writeSaveRecord (content) {

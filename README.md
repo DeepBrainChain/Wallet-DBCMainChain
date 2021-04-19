@@ -1,3 +1,25 @@
+# 优化版本
+
+## 安装
+```bash
+$ yarn
+```
+
+## 编译
+请在项目根目录执行
+```bash
+$ npm run build:www
+```
+
+## 说明
+- 代码压缩：会进行gzip及brotli压缩；请安装 brotli ，安装方法自行根据平台搜索
+- 图片压缩：请使用`node scripts/tinypng.js` 进行压缩，目前图片文件都已压缩完成如果后续有更新请跑命令即可，需要在填tinypng的秘钥，具体参照https://tinypng.com/developers
+- 部署注意：需要server服务(开启方法参照各个server服务)开启gzip和brotli压缩，浏览器只有在https下面brotli压缩才会生效
+- cdn：目前react、react-dom已走cdn加速，会加速资源加载
+
+
+
+
 [![polkadotjs](https://img.shields.io/badge/polkadot-js-orange?style=flat-square)](https://polkadot.js.org)
 ![license](https://img.shields.io/badge/License-Apache%202.0-blue?logo=apache&style=flat-square)
 [![maintainability](https://img.shields.io/codeclimate/maintainability-percentage/polkadot-js/apps?logo=code-climate&style=flat-square)](https://codeclimate.com/github/polkadot-js/apps)
