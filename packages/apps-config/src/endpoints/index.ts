@@ -23,21 +23,21 @@ export function createWsEndpoints (t: TFunction): LinkOption[] {
     },
     ...createProduction(t),
     {
-      isDisabled: false,
+      isDisabled: true,
       isHeader: true,
       text: t('rpc.header.test.relay', 'Test relays & parachains', { ns: 'apps-config' }),
       textBy: '',
       value: ''
     },
-    ...createRococo(t),
+    // ...createRococo(t),
     {
-      isDisabled: false,
+      isDisabled: true,
       isHeader: true,
       text: t('rpc.header.test', 'Test networks', { ns: 'apps-config' }),
       textBy: '',
       value: ''
     },
-    ...createTesting(t),
+    // ...createTesting(t),
     {
       isDevelopment: true,
       isDisabled: false,
