@@ -118,10 +118,10 @@ export function createProduction (t: TFunction): LinkOption[] {
     //   }
     // },
     {
-      info: 'dbctestnet',
-      text: t('rpc.dbc', 'DBC testnet', { ns: 'apps-config' }),
+      info: 'dbcmainnet',
+      text: t('rpc.dbc', 'DBC Mainnet', { ns: 'apps-config' }),
       providers: {
-        'DBC Network': 'wss://infotest.dbcwallet.io'
+        'DBC Mainnet': 'wss://info.dbcwallet.io'
       }
     }
     // {

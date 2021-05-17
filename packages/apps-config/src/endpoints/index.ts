@@ -31,13 +31,13 @@ export function createWsEndpoints (t: TFunction): LinkOption[] {
     },
     // ...createRococo(t),
     {
-      isDisabled: true,
+      isDisabled: false,
       isHeader: true,
       text: t('rpc.header.test', 'Test networks', { ns: 'apps-config' }),
       textBy: '',
       value: ''
     },
-    // ...createTesting(t),
+    ...createTesting(t),
     {
       isDevelopment: true,
       isDisabled: false,
