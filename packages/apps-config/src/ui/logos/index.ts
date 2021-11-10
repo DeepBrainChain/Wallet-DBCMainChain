@@ -18,7 +18,7 @@ import chainSnakenet from "./chains/snakenet.svg";
 import chainUnique from "./chains/unique.svg";
 import extensionPolkadotJs from "./extensions/polkadot-js.svg";
 import externalCommonwealth from "./external/commonwealth.png";
-import externalDbctreasury from "./external/dotreasury.svg";
+import externalDbctreasury from "./external/dbctreasury.svg";
 import externalPolkascan from "./external/polkascan.png";
 import externalPolkassembly from "./external/polkassembly.png";
 import externalPolkastats from "./external/polkastats.png";
