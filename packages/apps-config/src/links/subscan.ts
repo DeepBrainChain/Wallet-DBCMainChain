@@ -14,6 +14,7 @@ export default {
     'Crust Maxwell': 'crust',
     'Darwinia CC1': 'darwinia-cc1',
     'Darwinia Crab': 'crab',
+    'DBC Mainnet': 'dbcmainnet',
     Edgeware: 'edgeware',
     Equilibrium: 'equilibrium',
     Kulupu: 'kulupu',
@@ -27,7 +28,7 @@ export default {
     Westend: 'westend'
   },
   create: (chain: string, path: string, data: BN | number | string): string =>
-    `https://${chain}.subscan.io/${path}/${data.toString()}`,
+    `https://dbc.subscan.io/${path}/${data.toString()}`,
   isActive: true,
   logo: externalLogos.subscan as string,
   paths: {
@@ -38,7 +39,8 @@ export default {
     proposal: 'democracy_proposal',
     referendum: 'referenda',
     techcomm: 'tech',
-    treasury: 'treasury'
+    treasury: 'treasury',
+    validator: 'validator'
   },
   url: 'https://subscan.io/'
 };
