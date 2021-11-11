@@ -21,7 +21,6 @@ const DBCSubreddit = "DBC_Council"
 var (
 	goVersion  string
 	gitCommit  string
-	gitUrl     string
 	commitTime string
 
 	postIDToURL      = make(map[string]string)
@@ -35,10 +34,8 @@ func main() {
 	printVersion := flag.Bool("version", false, "print version")
 	flag.Parse()
 	if *printVersion {
-		fmt.Printf("Commit Hash: %s \n", gitCommit)
-		fmt.Printf("Commit Time: %s \n", commitTime)
-		fmt.Printf("GO Version: %s \n", goVersion)
-		fmt.Printf("Git Repo URL: %s \n", gitUrl)
+		fmt.Printf("git commit: %s %s \n", gitCommit, commitTime)
+		fmt.Printf("go version: %s \n", goVersion)
 		return
 	}
 

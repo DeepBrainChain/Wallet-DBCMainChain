@@ -1,11 +1,9 @@
 GO_VERSION=`go version`
-GIT_COMMIT=`git rev-parse HEAD`
-GIT_URL=`git remote -v`
-BUILD_TIME=`git show -s --format=%cd`
+GIT_COMMIT=`git rev-parse --short HEAD`
+COMMIT_TIME=`git show -s --format=%ci`
 
 LDFLAGS="-X 'main.goVersion=${GO_VERSION}' \
 	-X 'main.gitCommit=$(GIT_COMMIT)' \
-	-X 'main.gitUrl=${GIT_URL}' \
 	-X 'main.commitTime=${COMMIT_TIME}'"
 
 build:
