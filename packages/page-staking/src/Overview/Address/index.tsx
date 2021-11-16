@@ -3,7 +3,7 @@
 
 import type { DeriveAccountInfo, DeriveHeartbeatAuthor } from '@polkadot/api-derive/types';
 import type { Option } from '@polkadot/types';
-import type { SlashingSpans, ValidatorPrefs } from '@polkadot/types/interfaces';
+import type { SlashingSpans, ValidatorPrefs , EraIndex} from '@polkadot/types/interfaces';
 import type { NominatedBy as NominatedByType, ValidatorInfo } from '../../types';
 import type { NominatorValue } from './types';
 
@@ -82,16 +82,25 @@ function useAddressCalls (api: ApiPromise, address: string, isMain?: boolean) {
   return { accountInfo, slashingSpans };
 }
 
+function getCommission (api: ApiPromise, address: string) {
+  const currentEra = useCall<Option<EraIndex>>(api.query.staking?.currentEra);
+  const params1 = useMemo(() => [ currentEra?.toHuman(), address ], [ currentEra?.toHuman(), address ]);
+  const commission = useCall<ValidatorPrefs>(api.query.staking?.erasValidatorPrefs, params1);
+  return (commission as ValidatorPrefs)?.commission?.unwrap()?.toHuman();
+}
+
 function Address ({ address, className = '', filterName, hasQueries, isElected, isFavorite, isMain, lastBlock, nominatedBy, points, recentlyOnline, toggleFavorite, validatorInfo, withIdentity }: Props): React.ReactElement<Props> | null {
   const { api } = useApi();
   const { accountInfo, slashingSpans } = useAddressCalls(api, address, isMain);
 
-  const { commission, nominators, stakeOther, stakeOwn } = useMemo(
+  const { nominators, stakeOther, stakeOwn } = useMemo(
     () => validatorInfo
       ? expandInfo(validatorInfo)
       : { nominators: [] },
     [validatorInfo]
   );
+
+  const commission1 = getCommission(api, address);
 
   const isVisible = useMemo(
     () => accountInfo ? checkVisibility(api, address, accountInfo, filterName, withIdentity) : true,
@@ -150,7 +159,7 @@ function Address ({ address, className = '', filterName, hasQueries, isElected, 
         </td>
       )}
       <td className='number'>
-        {commission}
+        {commission1}
       </td>
       {isMain && (
         <>
