@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import type { DeriveAccountInfo, DeriveHeartbeatAuthor } from '@polkadot/api-derive/types';
-import type { Option } from '@polkadot/types';
+import type { Option , u64} from '@polkadot/types';
 import type { SlashingSpans, ValidatorPrefs , EraIndex} from '@polkadot/types/interfaces';
 import type { NominatedBy as NominatedByType, ValidatorInfo } from '../../types';
 import type { NominatorValue } from './types';
@@ -86,7 +86,18 @@ function getCommission (api: ApiPromise, address: string) {
   const currentEra = useCall<Option<EraIndex>>(api.query.staking?.currentEra);
   const params1 = useMemo(() => [ currentEra?.toHuman(), address ], [ currentEra?.toHuman(), address ]);
   const commission = useCall<ValidatorPrefs>(api.query.staking?.erasValidatorPrefs, params1);
-  return (commission as ValidatorPrefs)?.commission?.unwrap()?.toHuman();
+
+  // const sizeA = useCall<u64>(api.query.staking.validators.size, params2);
+  let sizeB = useCall<u64>(api.query.staking?.erasValidatorPrefs.size, params1);
+
+  if (sizeB?.isZero()){
+    const params2 = useMemo(() => [address], [address]);
+    const validator = useCall<ValidatorPrefs>(api.query.staking?.validators, params2);
+
+    return validator?.commission?.unwrap()?.toHuman();
+  } else {
+    return (commission as ValidatorPrefs)?.commission?.unwrap()?.toHuman();
+  }
 }
 
 function Address ({ address, className = '', filterName, hasQueries, isElected, isFavorite, isMain, lastBlock, nominatedBy, points, recentlyOnline, toggleFavorite, validatorInfo, withIdentity }: Props): React.ReactElement<Props> | null {
