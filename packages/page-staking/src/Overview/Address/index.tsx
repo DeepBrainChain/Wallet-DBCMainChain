@@ -89,9 +89,9 @@ function getCommission (api: ApiPromise, address: string) {
 
   const params2 = useMemo(() => [address], [address]);
   const validator = useCall<ValidatorPrefs>(api.query.staking?.validators, params2);
-  let sizeB = useCall<u64>(api.query.staking?.erasValidatorPrefs.size, params1);
+  // let sizeB = useCall<u64>(api.query.staking?.erasValidatorPrefs.size, params1);
 
-  if (sizeB?.isZero()){
+  if (validator){
     return (validator as ValidatorPrefs)?.commission?.unwrap()?.toHuman();
   } else {
     return (commission as ValidatorPrefs)?.commission?.unwrap()?.toHuman();
