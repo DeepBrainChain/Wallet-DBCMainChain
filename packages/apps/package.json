@@ -52,5 +52,8 @@
   "peerDependencies": {
     "typescript": "*",
     "webpack": "*"
+  },
+  "scripts": {
+    "exec:scripts": "cd build && bash br.bash && bash gzip.bash && cd static && bash svg.bash"
   }
 }

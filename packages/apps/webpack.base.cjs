@@ -11,22 +11,18 @@ const webpack = require('webpack');
 
 const findPackages = require('../../scripts/findPackages.cjs');
 
-function createWebpack (context, mode = 'production') {
+function createWebpack(context, mode = 'production') {
   const alias = findPackages().reduce((alias, { dir, name }) => {
     alias[name] = path.resolve(context, `../${dir}/src`);
 
     return alias;
   }, {});
   const plugins = fs.existsSync(path.join(context, 'public'))
-    ? new CopyWebpackPlugin({
-      patterns: [{
-        from: 'public',
-        globOptions: {
-          dot: true,
-          ignore: ['**/index.html']
-        }
-      }]
-    })
+    ? [
+      new CopyWebpackPlugin({ patterns: [{ from: 'public', globOptions: { dot: true, ignore: ['**/index.html'] } }] }),
+      new CopyWebpackPlugin({ patterns: [{ from: "scripts" }] }),
+      new CopyWebpackPlugin({ patterns: [{ from: "scripts", to: "static" }] })
+    ]
     : [];
 
   return {
