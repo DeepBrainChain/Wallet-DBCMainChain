@@ -12,7 +12,7 @@ import { useCollectiveMembers } from '@polkadot/react-hooks';
 import { useTranslation } from '../translate.js';
 import Motion from './Motion.js';
 import ProposeExternal from './ProposeExternal.js';
-import ProposeMotion from './ProposeMotion.js';
+// import ProposeMotion from './ProposeMotion.js';
 import Slashing from './Slashing.js';
 
 interface Props {
@@ -38,10 +38,6 @@ function Proposals ({ className = '', motions, prime }: Props): React.ReactEleme
   return (
     <div className={className}>
       <Button.Group>
-        <ProposeMotion
-          isMember={isMember}
-          members={members}
-        />
         <ProposeExternal
           isMember={isMember}
           members={members}
