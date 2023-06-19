@@ -1,3 +1,28 @@
+# 优化版本
+
+## 安装依赖
+
+```bash
+$ yarn
+```
+
+## 编译
+
+请在项目根目录执行
+
+```bash
+$ npm run build:www
+```
+
+> 编译后的目录为 `packages/apps/build`
+
+## 说明
+
+- 代码压缩：会进行 gzip 及 brotli 压缩；请安装 brotli ，安装方法自行根据平台搜索
+- 图片压缩：请使用`node scripts/tinypng.js` 进行压缩，目前图片文件都已压缩完成如果后续有更新请跑命令即可，需要在填 tinypng 的秘钥，具体参照https://tinypng.com/developers
+- 部署注意：需要 server 服务(开启方法参照各个 server 服务)开启 gzip 和 brotli 压缩，浏览器只有在 https 下面 brotli 压缩才会生效
+- ~~cdn：目前 react、react-dom 已走 cdn 加速，会加速资源加载~~
+
 # @polkadot/apps
 
 A Portal into the Polkadot and Substrate networks. Provides a view and interaction layer from a browser.
