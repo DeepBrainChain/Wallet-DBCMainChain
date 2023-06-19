@@ -1,0 +1,27 @@
+{
+  "bugs": "https://github.com/polkadot-js/apps/issues",
+  "engines": {
+    "node": ">=16"
+  },
+  "homepage": "https://github.com/polkadot-js/apps/tree/master/packages/page-democracy#readme",
+  "license": "Apache-2.0",
+  "name": "@polkadot/app-democracy",
+  "private": true,
+  "repository": {
+    "directory": "packages/page-democracy",
+    "type": "git",
+    "url": "https://github.com/polkadot-js/apps.git"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "version": "0.131.4",
+  "dependencies": {
+    "@polkadot/react-components": "^0.131.4",
+    "@polkadot/react-query": "^0.131.4"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "react-is": "*"
+  }
+}
