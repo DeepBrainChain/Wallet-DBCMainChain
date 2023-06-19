@@ -4,7 +4,7 @@
 import type { ExternalDef } from './types.js';
 
 import { Commonwealth } from './commonwealth.js';
-import { Dotreasury } from './dotreasury.js';
+import { DBCtreasury } from './dbctreasury.js';
 import { DotScanner } from './dotscanner.js';
 import { KodaDot } from './kodadot.js';
 import { Polkaholic } from './polkaholic.js';
@@ -18,8 +18,8 @@ import { Subsquare } from './subsquare.js';
 
 export const externalLinks: Record<string, ExternalDef> = {
   Commonwealth,
+  DBCtreasury,
   DotScanner,
-  Dotreasury,
   KodaDot,
   Polkaholic,
   Polkascan,

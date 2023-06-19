@@ -17,3 +17,4 @@ export { externalStatescanSVG } from './generated/statescanSVG.js';
 export { externalSubidSVG } from './generated/subidSVG.js';
 export { externalSubscanPNG } from './generated/subscanPNG.js';
 export { externalSubsquareSVG } from './generated/subsquareSVG.js';
+export { externalDbctreasurySVG } from './generated/dbctreasurySVG.js';
