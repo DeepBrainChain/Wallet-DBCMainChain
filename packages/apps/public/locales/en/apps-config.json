@@ -1,6 +1,7 @@
 {
   "lightclient.experimental": "light client (experimental)",
   "lng.detect": "Default browser language (auto-detect)",
+  "rpc.dbc": "DBC Network",
   "rpc.dev.custom": "Custom environment",
   "rpc.dev.custom.entry": "Custom {{WS_URL}}",
   "rpc.dev.custom.own": "Custom",
@@ -13,6 +14,5 @@
   "rpc.header.test": "Test networks",
   "rpc.header.westend.relay": "Test Westend & parachains",
   "rpc.hosted.via": "via {{host}}",
-  "ss58.default": "Default for the connected node",
-  "rpc.dbc": "DBC Network"
+  "ss58.default": "Default for the connected node"
 }

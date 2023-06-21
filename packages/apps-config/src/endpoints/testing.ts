@@ -1006,7 +1006,6 @@ export const testChains: Omit<EndpointOption, 'teleport'>[] = [
       "DBC Testnet": "wss://infotest.dbcwallet.io:7777",
     },
     ui: {
-      color: 'linear-gradient(to right, #E89A76 0%, #C5B8CC 50%, #B0B4D7 100%)',
       logo: dbcPNG
     }
   },
