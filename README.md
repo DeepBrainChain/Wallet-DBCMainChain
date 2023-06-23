@@ -11,6 +11,8 @@ $ yarn
 请在项目根目录执行
 
 ```bash
+# 添加自定义类型后，需要执行自动生成脚本!
+npm run build:before
 $ npm run build:www
 ```
 
@@ -19,41 +21,57 @@ $ npm run build:www
 ## 说明
 
 - 代码压缩：会进行 gzip 及 brotli 压缩；请安装 brotli ，安装方法自行根据平台搜索
-- 图片压缩：请使用`node scripts/tinypng.js` 进行压缩，目前图片文件都已压缩完成如果后续有更新请跑命令即可，需要在填 tinypng 的秘钥，具体参照https://tinypng.com/developers
-- 部署注意：需要 server 服务(开启方法参照各个 server 服务)开启 gzip 和 brotli 压缩，浏览器只有在 https 下面 brotli 压缩才会生效
+- 图片压缩：请使用`node scripts/tinypng.js`
+  进行压缩，目前图片文件都已压缩完成如果后续有更新请跑命令即可，需要在填 tinypng
+  的秘钥，具体参照https://tinypng.com/developers
+- 部署注意：需要 server 服务(开启方法参照各个 server 服务)开启 gzip 和 brotli
+  压缩，浏览器只有在 https 下面 brotli 压缩才会生效
 - ~~cdn：目前 react、react-dom 已走 cdn 加速，会加速资源加载~~
 
 # @polkadot/apps
 
-A Portal into the Polkadot and Substrate networks. Provides a view and interaction layer from a browser.
+A Portal into the Polkadot and Substrate networks. Provides a view and
+interaction layer from a browser.
 
-This can be accessed as a hosted application via https://polkadot.js.org/apps/ or you can access the IPFS hosted version via https://polkadot.js.org/apps/ipfs (via hash) or https://dotapps.io (via ipns) to explore any of the supported Polkadot and Substrate chains.
+This can be accessed as a hosted application via https://polkadot.js.org/apps/
+or you can access the IPFS hosted version via https://polkadot.js.org/apps/ipfs
+(via hash) or https://dotapps.io (via ipns) to explore any of the supported
+Polkadot and Substrate chains.
 
-If you run one or more IPFS node(s), pinning the UI (which only gets updated on releases) will make it faster for you and others. You can find details about that below in the IPFS chapter below.
+If you run one or more IPFS node(s), pinning the UI (which only gets updated on
+releases) will make it faster for you and others. You can find details about
+that below in the IPFS chapter below.
 
-**Important** If you are a chain developer and would like to add support for your chain to the UI, all the local configuration (API types, settings, logos) can be customized in [the apps-config package](packages/apps-config#README.md), complete with instructions of what goes where.
-
+**Important** If you are a chain developer and would like to add support for
+your chain to the UI, all the local configuration (API types, settings, logos)
+can be customized in [the apps-config package](packages/apps-config#README.md),
+complete with instructions of what goes where.
 
 ## Overview
 
 The repo is split into a number of packages, each representing an application.
 
-
 ## Development
 
 Contributions are welcome!
 
-To start off, this repo (along with others in the [@polkadot](https://github.com/polkadot-js/) family) uses yarn workspaces to organize the code. As such, after cloning dependencies _should_ be installed via `yarn`, not via npm, the latter will result in broken dependencies.
+To start off, this repo (along with others in the
+[@polkadot](https://github.com/polkadot-js/) family) uses yarn workspaces to
+organize the code. As such, after cloning dependencies _should_ be installed via
+`yarn`, not via npm, the latter will result in broken dependencies.
 
 To get started -
 
-1. Clone the repo locally, via `git clone https://github.com/polkadot-js/apps <optional local path>`
-2. Ensure that you have a recent LTS version of Node.js, for development purposes [Node >= 16](https://nodejs.org/en/) is recommended.
-3. Ensure that you have a recent version of Yarn, for development purposes [Yarn >= 1.22](https://yarnpkg.com/docs/install) is required.
+1. Clone the repo locally, via
+   `git clone https://github.com/polkadot-js/apps <optional local path>`
+2. Ensure that you have a recent LTS version of Node.js, for development
+   purposes [Node >= 16](https://nodejs.org/en/) is recommended.
+3. Ensure that you have a recent version of Yarn, for development purposes
+   [Yarn >= 1.22](https://yarnpkg.com/docs/install) is required.
 4. Install the dependencies by running `yarn`
-5. Ready! Now you can launch the UI (assuming you have a local Polkadot Node running), via `yarn run start`
+5. Ready! Now you can launch the UI (assuming you have a local Polkadot Node
+   running), via `yarn run start`
 6. Access the UI via [http://localhost:3000](http://localhost:3000)
-
 
 ## Docker
 
@@ -69,11 +87,14 @@ To build a docker container containing local changes -
 docker build -t jacogr/polkadot-js-apps -f docker/Dockerfile .
 ```
 
-When using these Docker commands, you can access the UI via http://localhost:80 (or just http://localhost)
+When using these Docker commands, you can access the UI via http://localhost:80
+(or just http://localhost)
 
 ## IPFS
 
-IPFS allows sharing files in a decentralized manner in a similar fashion the polkadot network exchanges blocks. IPFS works best when many nodes seed the same data. Nodes can seed specific data by **pinning** them.
+IPFS allows sharing files in a decentralized manner in a similar fashion the
+polkadot network exchanges blocks. IPFS works best when many nodes seed the same
+data. Nodes can seed specific data by **pinning** them.
 
 You can pin with the following command:
 
@@ -90,39 +111,49 @@ IPFS='/usr/local/bin/ipfs'
 curl -s https://polkadot.js.org/apps/ipfs/pin.json | jq -jr .IpfsHash | xargs -0 -I CID $IPFS pin add --progress CID
 ```
 
-I suggest to run the script once. The output should be similar to (the CID/Hash will very likely be different though):
+I suggest to run the script once. The output should be similar to (the CID/Hash
+will very likely be different though):
+
 ```
 $ /usr/local/bin/polkadotjs-ipfs-pin.sh
 pinned QmNYAbzaE8kRAf68YiN3ZuUxgdwroeav3JhicsHsG5b2oW recursively
 ```
 
-Now that you know the CID (hash), you can check whether the data is already pinned or not:
+Now that you know the CID (hash), you can check whether the data is already
+pinned or not:
+
 ```
 $ ipfs pin ls | grep QmNYAbzaE8kRAf68YiN3ZuUxgdwroeav3JhicsHsG5b2oW
 QmNYAbzaE8kRAf68YiN3ZuUxgdwroeav3JhicsHsG5b2oW recursive
 ```
 
-Now that we know it works, we can automate that with a cron task. Run `crontab -e`.
-If you see only comments, append the following to the file and save:
+Now that we know it works, we can automate that with a cron task. Run
+`crontab -e`. If you see only comments, append the following to the file and
+save:
+
 ```
 SHELL=/bin/bash
 HOME=/
 0 * * * * /usr/local/bin/polkadotjs-ipfs-pin.sh >/dev/null 2>&1
 ```
 
-Now our script will run every hours at minute '0' (8:00, 9:00, etc...). To check, we can unpin temporarily:
+Now our script will run every hours at minute '0' (8:00, 9:00, etc...). To
+check, we can unpin temporarily:
+
 ```
 $ ipfs pin rm QmNYAbzaE8kRAf68YiN3ZuUxgdwroeav3JhicsHsG5b2oW
 unpinned QmNYAbzaE8kRAf68YiN3ZuUxgdwroeav3JhicsHsG5b2oW
 ```
 
 Now asking for the CID confirms that is it not there.
+
 ```
 $ ipfs pin ls QmNYAbzaE8kRAf68YiN3ZuUxgdwroeav3JhicsHsG5b2oW
 Error: path 'QmNYAbzaE8kRAf68YiN3ZuUxgdwroeav3JhicsHsG5b2oW' is not pinned
 ```
 
 Wait until the your cron task runs and try again:
+
 ```
 $ ipfs pin ls QmNYAbzaE8kRAf68YiN3ZuUxgdwroeav3JhicsHsG5b2oW
 QmNYAbzaE8kRAf68YiN3ZuUxgdwroeav3JhicsHsG5b2oW recursive
@@ -130,12 +161,17 @@ QmNYAbzaE8kRAf68YiN3ZuUxgdwroeav3JhicsHsG5b2oW recursive
 
 Tada! This is now automatic and you may forget it.
 
-If you are curious and want to know how many people seed the UI on IPFS, here is the magic command (it may take a while to return the answer as ipfs will search for about 1 minute):
+If you are curious and want to know how many people seed the UI on IPFS, here is
+the magic command (it may take a while to return the answer as ipfs will search
+for about 1 minute):
+
 ```
 ipfs dht findprovs QmTejwB7mJPBHBoqubjzHSgSxfLMcjnZA3LFefqoQc87VJ | wc -l
 ```
 
-If you are current about the content of what you just pinned, you may use the following command:
+If you are current about the content of what you just pinned, you may use the
+following command:
+
 ```
 $ ipfs ls QmTejwB7mJPBHBoqubjzHSgSxfLMcjnZA3LFefqoQc87VJ
 QmPJGyqVCcXm238noz7TZDByyGa35qqc8g6sfyXF3KDXZ3 38078   favicon.ico
@@ -155,15 +191,22 @@ QmeYBC5EgbccC8NEwXC2rvbd93YiHtTM5xYzqCDohXerDf 859984  vendor.8b793a81.js
 
 ## Desktop App
 
-The main advantage of using Desktop App is that it by default stores encrypted accounts on the filesystem instead of browser's local storage.
-Local storage is susceptible to attacks using XSS (Cross-Site Scripting). There's no such risk when with files stored on disk.
+The main advantage of using Desktop App is that it by default stores encrypted
+accounts on the filesystem instead of browser's local storage. Local storage is
+susceptible to attacks using XSS (Cross-Site Scripting). There's no such risk
+when with files stored on disk.
 
-The desktop app uses the [Electron](https://www.electronjs.org/) framework. It provides the same features as web app, the only difference
-being different account storage.
+The desktop app uses the [Electron](https://www.electronjs.org/) framework. It
+provides the same features as web app, the only difference being different
+account storage.
 
 The accounts are stored in the following directories:
-* Mac: `~/Library/Application Support/polkadot-apps/polkadot-accounts`
-* Linux: `~/.config/polkadot-apps/polkadot-accounts` (or `$XDG_CONFIG_HOME/polkadot-apps/polkadot-accounts` if `$XDG_CONFIG_HOME` is defined)
-* Windows: `%APPDATA%\polkadot-apps\polkadot-accounts`
 
-For more details on the desktop app, head over to [Electron package README](https://github.com/polkadot-js/apps/blob/master/packages/apps-electron/README.md).
+- Mac: `~/Library/Application Support/polkadot-apps/polkadot-accounts`
+- Linux: `~/.config/polkadot-apps/polkadot-accounts` (or
+  `$XDG_CONFIG_HOME/polkadot-apps/polkadot-accounts` if `$XDG_CONFIG_HOME` is
+  defined)
+- Windows: `%APPDATA%\polkadot-apps\polkadot-accounts`
+
+For more details on the desktop app, head over to
+[Electron package README](https://github.com/polkadot-js/apps/blob/master/packages/apps-electron/README.md).
