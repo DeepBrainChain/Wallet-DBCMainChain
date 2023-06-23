@@ -35,6 +35,8 @@ import testPara from './cumulus-test-parachain.js';
 import curio from './curio.js';
 import darwinia from './darwinia.js';
 import datahighwayParachain from './datahighway.js';
+import dbc from './dbc.js';
+import congtu from './congtu.js';
 import dockMainnet from './dock-mainnet.js';
 import dockTestnet from './dock-testnet.js';
 import dotmog from './dotmog.js';
@@ -182,6 +184,8 @@ const spec: Record<string, OverrideBundleDefinition> = {
   'curio-testnet': curio,
   datahighway: westlake,
   'datahighway-parachain': datahighwayParachain,
+  node: dbc,
+  congtu: congtu,
   dawn: eave,
   'dev-parachain': zenlink,
   'dock-pos-main-runtime': dockMainnet,

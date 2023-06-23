@@ -4,6 +4,7 @@
 // Do not edit. Auto-generated via node scripts/imgConvert.mjs
 
 export { externalCommonwealthPNG } from './generated/commonwealthPNG.js';
+export { externalDbctreasurySVG } from './generated/dbctreasurySVG.js';
 export { externalDotreasurySVG } from './generated/dotreasurySVG.js';
 export { externalDotscannerPNG } from './generated/dotscannerPNG.js';
 export { externalEmptySVG } from './generated/emptySVG.js';
@@ -17,4 +18,3 @@ export { externalStatescanSVG } from './generated/statescanSVG.js';
 export { externalSubidSVG } from './generated/subidSVG.js';
 export { externalSubscanPNG } from './generated/subscanPNG.js';
 export { externalSubsquareSVG } from './generated/subsquareSVG.js';
-export { externalDbctreasurySVG } from './generated/dbctreasurySVG.js';

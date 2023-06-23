@@ -4,7 +4,7 @@
 import type { EndpointOption } from './types.js';
 
 // import { chains3dpassSVG, chainsAlephSVG, chainsBittensorPNG, chainsCreditcoinPNG, chainsDebioSVG, chainsEquilibriumSVG, chainsFragnovaPNG, chainsGenshiroSVG, chainsLogionPNG, chainsMyriadPNG, chainsSpannerPNG, chainsVaraSVG } from '../ui/logos/chains/index.js';
-import { dbcPNG  } from '../ui/logos/nodes/index.js';
+import { nodesDbcPNG  } from '../ui/logos/nodes/index.js';
 
 export * from './productionRelayKusama.js';
 export * from './productionRelayPolkadot.js';
@@ -560,7 +560,7 @@ export const prodChains: Omit<EndpointOption, 'teleport'>[] = [
     },
     ui: {
       color: 'linear-gradient(-90deg, #9400D3 0%, #5A5CA9 50%, #00454a 100%)',
-      logo: dbcPNG
+      logo: nodesDbcPNG
     }
   },
 ];
