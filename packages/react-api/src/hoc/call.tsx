@@ -119,12 +119,17 @@ export default function withCall<P extends ApiProps> (endpoint: string, { at, at
       }
 
       private getParams (props: any): [boolean, unknown[]] {
-        const paramValue = paramPick
-          ? paramPick(props)
-          : paramName
-            ? props[paramName]
-            : undefined;
-
+        // const paramValue = paramPick
+        //   ? paramPick(props)
+        //   : paramName
+        //     ? props[paramName]
+        //     : undefined;
+        let paramValue;
+        if (paramName == 'dlcAssets') {
+          paramValue = ['88', props['address']]
+        } else {
+          paramValue = paramPick ? paramPick(props) : paramName ? props[paramName] : undefined;
+        }
         if (atProp) {
           at = props[atProp];
         }

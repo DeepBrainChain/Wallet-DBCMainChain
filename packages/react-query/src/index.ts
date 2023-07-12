@@ -11,6 +11,7 @@ export { default as Bonded } from './Bonded.js';
 export { default as Chain } from './Chain.js';
 export { default as Elapsed } from './Elapsed.js';
 export { default as FormatBalance } from './FormatBalance.js';
+export { default as FormatBalanceNew } from "./FormatBalanceNew.js";
 export { default as LockedVote } from './LockedVote.js';
 export { default as NodeName } from './NodeName.js';
 export { default as NodeVersion } from './NodeVersion.js';

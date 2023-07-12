@@ -6,6 +6,7 @@ export { default as AccountIndex } from './AccountIndex.js';
 export { default as AccountName } from './AccountName.js';
 export { default as AccountSidebar } from './AccountSidebar/index.js';
 export { default as AddressInfo } from './AddressInfo.js';
+export { default as AddressInfo1 } from './AddressInfo1.js';
 export { default as AddressMini } from './AddressMini.js';
 export { default as AddressRow } from './AddressRow.js';
 export { default as AddressSmall } from './AddressSmall.js';

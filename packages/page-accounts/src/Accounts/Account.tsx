@@ -14,7 +14,7 @@ import type { AccountBalance, Delegation } from '../types.js';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import useAccountLocks from '@polkadot/app-referenda/useAccountLocks';
-import { AddressInfo, AddressSmall, Badge, Button, ChainLock, Columar, CryptoType, Forget, LinkExternal, Menu, Popup, styled, Table, Tags, TransferModal } from '@polkadot/react-components';
+import { AddressInfo, AddressInfo1, AddressSmall, Badge, Button, ChainLock, Columar, CryptoType, Forget, LinkExternal, Menu, Popup, styled, Table, Tags, TransferModal } from '@polkadot/react-components';
 import { useAccountInfo, useApi, useBalancesAll, useBestNumber, useCall, useLedger, useQueue, useStakingInfo, useToggle } from '@polkadot/react-hooks';
 import { keyring } from '@polkadot/ui-keyring';
 import { BN, BN_ZERO, formatBalance, formatNumber, isFunction } from '@polkadot/util';
@@ -706,10 +706,13 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
           className='balance all'
           colSpan={2}
         >
-          <AddressInfo
+          <AddressInfo1
             address={address}
             balancesAll={balancesAll}
             withBalance={BAL_OPTS_DEFAULT}
+            // dlcBalances={DLC_BALANCE}
+            // dlcBalancesLocks={DLC_locks}
+            // dlcBalancesAll={DLC_BALANCE_ALL}
           />
         </td>
         <td />
@@ -720,7 +723,7 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
           className='balance columar'
           colSpan={2}
         >
-          <AddressInfo
+          <AddressInfo1
             address={address}
             balancesAll={balancesAll}
             convictionLocks={convictionLocks}
