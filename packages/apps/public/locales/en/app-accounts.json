@@ -55,6 +55,8 @@
   "Ensure you are using a strong password for proper account protection.": "Ensure you are using a strong password for proper account protection.",
   "Evaluated {{count}} keys in {{elapsed}}s ({{avg}} keys/s)": "Evaluated {{count}} keys in {{elapsed}}s ({{avg}} keys/s)",
   "Existing approvals ({{approvals}}/{{threshold}})": "Existing approvals ({{approvals}}/{{threshold}})",
+  "For a better user experience, please use Chrome/Firefox browser to open the wallet address. To create a wallet and import a wallet, you need to install the corresponding plug-in": "For a better user experience, please use Chrome/Firefox browser to open the wallet address. To create a wallet and import a wallet, you need to install the corresponding plug-in",
+  "For a better user experience, when opening the wallet address in {{yourBrowser}} browser, you need to install the following plug-in to create wallet and import wallet": "For a better user experience, when opening the wallet address in {{yourBrowser}} browser, you need to install the following plug-in to create wallet and import wallet",
   "For approvals outstanding approvers will be shown, for hashes that should be cancelled the first approver is required.": "For approvals outstanding approvers will be shown, for hashes that should be cancelled the first approver is required.",
   "Forget this account": "Forget this account",
   "From JSON": "From JSON",

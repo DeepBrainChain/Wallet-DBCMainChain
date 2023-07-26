@@ -29,7 +29,12 @@ function BannerExtension (): React.ReactElement | null {
   const phishing = useRef<string>(t<string>('Since some extensions, such as the polkadot-js extension, protects you against all community reported phishing sites, there are valid reasons to use them for additional protection, even if you are not storing accounts in it.'));
 
   if (!isSupported || !browserName) {
-    return null;
+    // return null;
+    return (
+      <Banner type='warning'>
+        <p>{t<string>('For a better user experience, please use Chrome/Firefox browser to open the wallet address. To create a wallet and import a wallet, you need to install the corresponding plug-in')}</p>
+      </Banner>
+    );
   }
 
   if (isWeb3Injected) {
@@ -63,7 +68,12 @@ function BannerExtension (): React.ReactElement | null {
 
   return (
     <Banner type='warning'>
-      <p>{t<string>('It is recommended that you create/store your accounts securely and externally from the app. On {{yourBrowser}} the following browser extensions are available for use -', {
+      {/* <p>{t<string>('It is recommended that you create/store your accounts securely and externally from the app. On {{yourBrowser}} the following browser extensions are available for use -', {
+        replace: {
+          yourBrowser: stringUpperFirst(browserName)
+        }
+      })}</p> */}
+      <p>{t<string>('For a better user experience, when opening the wallet address in {{yourBrowser}} browser, you need to install the following plug-in to create wallet and import wallet', {
         replace: {
           yourBrowser: stringUpperFirst(browserName)
         }
@@ -80,13 +90,13 @@ function BannerExtension (): React.ReactElement | null {
         </li>
       ))
       }</ul>
-      <p>{t<string>('Accounts injected from any of these extensions will appear in this application and be available for use. The above list is updated as more extensions with external signing capability become available.')}&nbsp;
+      {/* <p>{t<string>('Accounts injected from any of these extensions will appear in this application and be available for use. The above list is updated as more extensions with external signing capability become available.')}&nbsp;
         <a
           href='https://github.com/polkadot-js/extension'
           rel='noopener noreferrer'
           target='_blank'
         >{t<string>('Learn more...')}</a>
-      </p>
+      </p> */}
       <p>{phishing.current}</p>
     </Banner>
   );

@@ -4,7 +4,7 @@
 import type { ApiPromise } from '@polkadot/api';
 import type { DeriveHeartbeatAuthor } from '@polkadot/api-derive/types';
 import type { Option } from '@polkadot/types';
-import type { SlashingSpans, ValidatorPrefs, EraIndex } from '@polkadot/types/interfaces';
+import type { SlashingSpans, ValidatorPrefs } from '@polkadot/types/interfaces';
 import type { BN } from '@polkadot/util';
 import type { NominatedBy as NominatedByType, ValidatorInfo } from '../../types.js';
 import type { NominatorValue } from './types.js';
@@ -90,13 +90,6 @@ function useAddressCalls (api: ApiPromise, address: string, isMain?: boolean) {
   return { accountInfo, slashingSpans };
 }
 
-function getCommission (api: ApiPromise, address: string) {
-  const currentEra = useCall<Option<EraIndex>>(api.query.staking?.currentEra);
-  const params1 = useMemo(() => [ currentEra?.toHuman(), address ], [ currentEra?.toHuman(), address ]);
-  const commission = useCall<ValidatorPrefs>(api.query.staking?.erasValidatorPrefs, params1);
-  return (commission as ValidatorPrefs)?.commission?.unwrap()?.toHuman();
-}
-
 function Address ({ address, className = '', filterName, hasQueries, isElected, isFavorite, isMain, isPara, lastBlock, minCommission, nominatedBy, points, recentlyOnline, toggleFavorite, validatorInfo, withIdentity }: Props): React.ReactElement<Props> | null {
   const { t } = useTranslation();
   const { api } = useApi();
@@ -109,8 +102,6 @@ function Address ({ address, className = '', filterName, hasQueries, isElected, 
       : {},
     [minCommission, validatorInfo]
   );
-
-  const commission1 = getCommission(api, address);
 
   const isVisible = useMemo(
     () => accountInfo ? checkVisibility(api, address, accountInfo, filterName, withIdentity) : true,
@@ -176,7 +167,7 @@ function Address ({ address, className = '', filterName, hasQueries, isElected, 
           )
         }
         <td className='number'>
-          { commission1?commission1:commission || <span className='--tmp'>50.00%</span>}
+          {commission || <span className='--tmp'>50.00%</span>}
         </td>
         {isMain && (
           <td className='number'>

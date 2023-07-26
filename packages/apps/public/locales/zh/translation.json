@@ -206,6 +206,8 @@
   "Fast track": "快速通道",
   "Fast track proposal": "快速通道的提案",
   "Filter available candidates based on name, address or short account index.": "根据姓名、地址或短帐户索引筛选可用的候选人。",
+  "For a better user experience, please use Chrome/Firefox browser to open the wallet address. To create a wallet and import a wallet, you need to install the corresponding plug-in": "为了更好的使用体验，请使用 Chrome/Firefox 浏览器打开钱包地址，创建钱包和导入钱包需要安装对应插件",
+  "For a better user experience, when opening the wallet address in {{yourBrowser}} browser, you need to install the following plug-in to create wallet and import wallet": "为了更好的使用体验，在  {{yourBrowser}}  浏览器中打开钱包地址时，需要安装下方插件创建钱包和导入钱包",
   "For approvals outstanding approvers will be shown, for hashes that should be cancelled the first approver is required.": "对于审批，将显示未完成的审批人，对于应取消的哈希，需要第一个审批人。",
   "For final approvals, the actual full call data is required to execute the transaction": "对于最终批准，执行交易需要实际的完整调用数据",
   "For fund security, your session key should not match your stash key.": "对于资金安全性，你的会话密钥不应与存储密钥匹配。",
