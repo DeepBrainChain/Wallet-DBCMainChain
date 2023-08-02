@@ -40,7 +40,28 @@ function BannerExtension (): React.ReactElement | null {
   if (isWeb3Injected) {
     if (hasInjectedAccounts) {
       if (!upgradableCount) {
-        return null;
+        return (
+          <Banner type='warning'>
+            <p>{t<string>('For a better user experience, when opening the wallet address in {{yourBrowser}} browser, you need to install the following plug-in to create wallet and import wallet', {
+              replace: {
+                yourBrowser: stringUpperFirst(browserName)
+              }
+            })}</p>
+            <ul>{availableExtensions[browserName].map(({ desc, link, name }): React.ReactNode => (
+              <li key={name}>
+                <a
+                  href={link}
+                  rel='noopener noreferrer'
+                  target='_blank'
+                >
+                  {name}
+                </a> ({t(desc)})
+              </li>
+            ))
+            }</ul>
+          </Banner>
+        );
+        // return null;
       }
 
       return (
