@@ -5,6 +5,7 @@ const definitions: OverrideBundleDefinition = {
     {
       minmax: [0, undefined],
       types: {
+        DispatchErrorModule: 'DispatchErrorModuleU8',
         URL: "Text",
         MachineId: "Text",
         TelecomName: "Text",
