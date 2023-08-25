@@ -6,8 +6,7 @@ const definitions: OverrideBundleDefinition = {
       // on all versions
       minmax: [0, undefined],
       types: {
-        // Address: 'AccountId',
-        // LookupSource: 'AccountId',
+        DispatchErrorModule: 'DispatchErrorModuleU8',
         ReportId: "u64",
         SlashId: "u64",
         BoxPubkey: "[u8; 32]",
@@ -105,7 +104,8 @@ const definitions: OverrideBundleDefinition = {
             WaitingFulfill: null,
             Online: null,
             StakerReportOffline: "(BlockNumber, Box<MachineStatus>)",
-            ReporterReportOffline: "(StashSlashReason, Box<MachineStatus>, AccountId, Vec<AccountId>)",
+            ReporterReportOffline:
+              "(StashSlashReason, Box<MachineStatus>, AccountId, Vec<AccountId>)",
             Creating: null,
             Rented: null,
           },
@@ -296,7 +296,12 @@ const definitions: OverrideBundleDefinition = {
           slash_result: "SlashResult",
         },
         ReportResultType: {
-          _enum: ["ReportSucceed", "ReportRefused", "ReporterNotSubmitEncryptedInfo", "NoConsensus"],
+          _enum: [
+            "ReportSucceed",
+            "ReportRefused",
+            "ReporterNotSubmitEncryptedInfo",
+            "NoConsensus",
+          ],
         },
         SlashResult: {
           _enum: ["Pending", "Canceled", "Executed"],
@@ -328,7 +333,13 @@ const definitions: OverrideBundleDefinition = {
           reason: "Vec<u8>",
         },
         ReportStatus: {
-          _enum: ["Reported", "WaitingBook", "Verifying", "SubmittingRaw", "CommitteeConfirmed"],
+          _enum: [
+            "Reported",
+            "WaitingBook",
+            "Verifying",
+            "SubmittingRaw",
+            "CommitteeConfirmed",
+          ],
         },
         MachineFaultType: {
           _enum: {
