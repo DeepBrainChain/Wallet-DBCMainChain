@@ -76,7 +76,7 @@ const StyledDiv = styled.div`
 
   .via-identity .name {
     font-size: var(--font-size-base);
-    line-height: 1.7rem;
+    // line-height: 1.7rem;
     text-transform: initial;
     filter: initial;
     opacity: 1;

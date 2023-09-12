@@ -63,10 +63,17 @@ function ProposalDisplay ({ className = '', isMember, members, proposal: { counc
             : null
           }
         </td>
-        <Table.Column.Expand
+        <td>
+          <LinkExternal
+            data={id}
+            type='treasury'
+            // withTitle
+          />
+        </td>
+        {/* <Table.Column.Expand
           isExpanded={isExpanded}
           toggle={toggleIsExpanded}
-        />
+        /> */}
       </tr>
       <tr className={`${className} ${isExpanded ? 'isExpanded isLast' : 'isCollapsed'} packedTop`}>
         <td />

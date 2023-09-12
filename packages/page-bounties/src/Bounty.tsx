@@ -124,6 +124,11 @@ function Bounty ({ bestNumber, bounty, className = '', description, index, propo
               proposals={proposals}
               status={status}
             />
+            <LinkExternal
+                data={index}
+                type='bounty'
+                // withTitle
+              />
             <ExpandButton
               expanded={isExpanded}
               onClick={toggleExpanded}
@@ -138,13 +143,13 @@ function Bounty ({ bestNumber, bounty, className = '', description, index, propo
           colSpan={3}
         >
           <Columar>
-            <Columar.Column>
+            {/* <Columar.Column>
               <LinkExternal
                 data={index}
                 type='bounty'
                 withTitle
               />
-            </Columar.Column>
+            </Columar.Column> */}
             <Columar.Column>
               <div className='column'>
                 <h5>{t<string>('Proposer')}</h5>
