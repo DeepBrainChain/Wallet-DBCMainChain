@@ -59,9 +59,7 @@ interface Props {
   address: string;
   balancesAll?: DeriveBalancesAll;
   dlcBalances?: DlcBalances;
-  dlcBalancesLocks?: BN;
   dlcBalances_Add?: DlcBalances;
-  dlcBalancesLocks_Add: BN;
   children?: React.ReactNode;
   className?: string;
   convictionLocks?: RefLock[];
@@ -77,8 +75,6 @@ interface Props {
   withLabel?: boolean;
 }
 
-
-const DlcBalancesLocks_Defult = BN_ZERO
 
 interface RefLock {
   endBlock: BN;
@@ -540,14 +536,13 @@ function createBalanceItems (formatIndex: number, lookup: Record<string, string>
 }
 
 function createBalanceItems1 (formatIndex: number, lookup: Record<string, string>, t: TFunction, 
-  { address, balanceDisplay, balancesAll, dlcBalances, dlcBalancesLocks, dlcBalances_Add, dlcBalancesLocks_Add, bestNumber, convictionLocks, democracyLocks, isAllLocked, otherBonded, ownBonded, stakingInfo, votingOf, withBalanceToggle, withLabel }: 
+  { address, balanceDisplay, balancesAll, dlcBalances, dlcBalances_Add, bestNumber, convictionLocks, democracyLocks, isAllLocked, otherBonded, ownBonded, stakingInfo, votingOf, withBalanceToggle, withLabel }: 
   { address: string; balanceDisplay: BalanceActiveType; balancesAll?: DeriveBalancesAll | DeriveBalancesAccountData; 
     dlcBalances: any;
     dlcBalances_Add: any;
-    dlcBalancesLocks: BN;
-    dlcBalancesLocks_Add: BN;
     bestNumber?: BlockNumber; convictionLocks?: RefLock[]; democracyLocks?: DeriveDemocracyLock[]; isAllLocked: boolean; otherBonded: BN[]; ownBonded: BN; stakingInfo?: DeriveStakingAccount; votingOf?: Voting; withBalanceToggle: boolean, withLabel: boolean }): React.ReactNode {
   const allItems: React.ReactNode[] = [];
+  console.log(dlcBalances, dlcBalances_Add, 'dlcBalances_Add');
   !withBalanceToggle && dlcBalances_Add && balanceDisplay.total && allItems.push(
     <React.Fragment key={`dlcBalances:${0}`}>
       <Label label={withLabel ? t<string>('total') : ''} />
@@ -555,8 +550,7 @@ function createBalanceItems1 (formatIndex: number, lookup: Record<string, string
         className={`result ${(dlcBalances_Add) ? '' : '--tmp'}`}
         formatIndex={formatIndex}
         labelPost={<IconVoid />}
-        // value={dlcBalances_Add ? dlcBalances_Add.balance.add(dlcBalancesLocks_Add) : 1}
-        value={ !(dlcBalances_Add&&dlcBalances_Add.isEmpty) ? dlcBalances_Add.value.balance.add(dlcBalancesLocks_Add) : (dlcBalancesLocks_Add ? dlcBalancesLocks_Add : 1) }
+        value={ !(dlcBalances_Add&&dlcBalances_Add.isEmpty) ? dlcBalances_Add.value.balance : 1 }
       />
     </React.Fragment>
   );
@@ -568,17 +562,6 @@ function createBalanceItems1 (formatIndex: number, lookup: Record<string, string
         formatIndex={formatIndex}
         labelPost={<IconVoid />}
         value={dlcBalances.value.balance}
-      />
-    </React.Fragment>
-  );
-  dlcBalancesLocks && !dlcBalancesLocks.isZero() && allItems.push(
-    <React.Fragment key={`dlcBalances:${2}`}>
-      <Label label={t<string>("locked")} />
-      <FormatBalanceNew
-        className="result"
-        labelPost={<IconVoid />}
-        formatIndex={formatIndex}
-        value={dlcBalancesLocks}
       />
     </React.Fragment>
   );
@@ -627,7 +610,7 @@ function renderBalances (props: Props, lookup: Record<string, string>, bestNumbe
 }
 
 function renderBalances1 (props: Props, lookup: Record<string, string>, bestNumber: BlockNumber | undefined, t: TFunction): React.ReactNode[] {
-  const { address, balancesAll, convictionLocks, democracyLocks, stakingInfo, dlcBalances, dlcBalancesLocks = DlcBalancesLocks_Defult, dlcBalances_Add, dlcBalancesLocks_Add = DlcBalancesLocks_Defult, votingOf, withBalance = true, withBalanceToggle = false, withLabel = false } = props;
+  const { address, balancesAll, convictionLocks, democracyLocks, stakingInfo, dlcBalances,  dlcBalances_Add, votingOf, withBalance = true, withBalanceToggle = false, withLabel = false } = props;
   const balanceDisplay = withBalance === true
     ? DEFAULT_BALANCES
     : withBalance || false;
@@ -638,9 +621,9 @@ function renderBalances1 (props: Props, lookup: Record<string, string>, bestNumb
   const [ownBonded, otherBonded] = calcBonded(stakingInfo, balanceDisplay.bonded);
   const isAllLocked = !!balancesAll && balancesAll.lockedBreakdown.some(({ amount }): boolean => amount?.isMax());
   const baseOpts = { address, balanceDisplay, bestNumber, convictionLocks, democracyLocks, isAllLocked, otherBonded, ownBonded, votingOf, withBalanceToggle, withLabel };
-  const items = [createBalanceItems1(0, lookup, t, { ...baseOpts, balancesAll, stakingInfo, dlcBalances, dlcBalancesLocks, dlcBalances_Add, dlcBalancesLocks_Add })];
+  const items = [createBalanceItems1(0, lookup, t, { ...baseOpts, balancesAll, stakingInfo, dlcBalances,  dlcBalances_Add })];
   withBalanceToggle && balancesAll?.additional.length && balancesAll.additional.forEach((balancesAll, index): void => {
-    items.push(createBalanceItems1(index + 1, lookup, t, { ...baseOpts, balancesAll, dlcBalances, dlcBalancesLocks, dlcBalances_Add, dlcBalancesLocks_Add }));
+    items.push(createBalanceItems1(index + 1, lookup, t, { ...baseOpts, balancesAll, dlcBalances, dlcBalances_Add }));
   });
   return items;
 }
@@ -844,14 +827,6 @@ export default withMulti(
       },
     ],
     [
-      "query.assets.locked",
-      {
-        paramName: "dlcAssets",
-        propName: "dlcBalancesLocks_Add",
-        skipIf: skipBalancesIf,
-      },
-    ],
-    [
       "query.assets.account",
       {
         paramName: "dlcAssets",
@@ -859,13 +834,5 @@ export default withMulti(
         skipIf: skipStakingIf,
       },
     ],
-    [
-      "query.assets.locked",
-      {
-        paramName: "dlcAssets",
-        propName: "dlcBalancesLocks",
-        skipIf: skipStakingIf,
-      },
-    ]
   )
 );
