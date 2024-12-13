@@ -52,7 +52,6 @@ function CardSummary ({ children, className = '', label, progress }: Props): Rea
   if (progress && isUndefined(left)) {
     return null;
   }
-
   const isTimed = progress && progress.withTime && !isUndefined(progress.total);
   const testidSuffix = (label ?? '').toString();
 

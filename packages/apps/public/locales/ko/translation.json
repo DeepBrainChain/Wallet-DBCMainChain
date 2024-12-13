@@ -829,6 +829,7 @@
   "Transfer an amount from a specific account into a parachain.": "지정된 계정에서 패러체인으로 금액을 이체하다",
   "Transfer the full account balance, reap the sender": "전체 계정 잔고를 이체하세요, 발송자를 립하세요",
   "Transfer to chain": "체인으로 이체하다",
+  "Transfer to exchange address is not supported yet": "Tip: 당분간 거래소 주소 이전은 지원되지 않습니다.",
   "Transfer to parachain": "파라체인으로 이체하다",
   "Transfer with account keep-alive checks": "계정의 키프 얼라이브 체크들이랑 같이 이체하세요",
   "Translate": "번역",

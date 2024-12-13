@@ -851,6 +851,7 @@
   "Transfer an amount from a specific account into a parachain.": "Transférez un montant d'un compte spécifique vers une Parachain.",
   "Transfer the full account balance, reap the sender": "Transférer le solde complet du compte, cela supprimera le compte débiteur.",
   "Transfer to chain": "Transférez vers la blockchain.",
+  "Transfer to exchange address is not supported yet": "Astuce : le transfert vers une adresse d'échange n'est pas pris en charge pour le moment.",
   "Transfer to parachain": "Transférez vers une Parachain.",
   "Transfer with account keep-alive checks": "Transfert en prenant en veillant à ne pas supprimer le compte débiteur.",
   "Translate": "Traduire",

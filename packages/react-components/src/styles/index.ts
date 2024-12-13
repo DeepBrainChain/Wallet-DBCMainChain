@@ -428,6 +428,10 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
       }
     }
 
+    &.new_marginlf {
+      margin: 0 0 .5rem 2rem;
+    }
+
     &.error {
       &:before {
         background: rgba(255, 12, 12, 0.05);

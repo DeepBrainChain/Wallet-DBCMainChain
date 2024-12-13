@@ -19,7 +19,6 @@ type Result = [blockInterval: number, timeStr: string, time: Time];
 export function calcBlockTime (blockTime: BN, blocks: BN, t: TFunction): Result {
   // in the case of excessively large locks, limit to the max JS integer value
   const value = bnMin(BN_MAX_INTEGER, blockTime.mul(blocks)).toNumber();
-
   // time calculations are using the absolute value (< 0 detection only on strings)
   const time = extractTime(Math.abs(value));
   const { days, hours, minutes, seconds } = time;

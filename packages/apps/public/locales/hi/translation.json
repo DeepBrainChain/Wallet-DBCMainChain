@@ -619,6 +619,7 @@
   "To council": "परिषद के लिए",
   "To ensure optimal fund security using the same stash/controller is strongly discouraged, but not forbidden.": "यह दृढ़ता से हतोत्साहित किया जाता है, लेकिन निषिद्ध नहीं है, एक ही छिपाने की जगह का उपयोग कर धन की इष्टतम सुरक्षा सुनिश्चित करने के लिए",
   "Transfer": "तबादला",
+  "Transfer to exchange address is not supported yet": "युक्ति: विनिमय पते पर स्थानांतरण फिलहाल समर्थित नहीं है।",
   "Translate": "अनुवाद करना",
   "Treasury overview": "ट्रेजरी अवलोकन",
   "Type here what you would like your address to contain. This tool will generate the keys and show the associated addresses that best match your search. You can use \"?\" as a wildcard for a character.": "यहां लिखें कि आप अपने पते को क्या नियंत्रित करना चाहते हैं। यह उपकरण चाबियाँ उत्पन्न करेगा और संबंधित पतों को प्रदर्शित करेगा जो आपकी खोज को सबसे उपयुक्त करते हैं। आप एक चरित्र के लिए एक वाइल्डकार्ड के रूप में \"?\" का उपयोग कर सकते हैं।",

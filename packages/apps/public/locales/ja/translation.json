@@ -317,6 +317,7 @@
   "This password is used to encrypt your private key. It must be strong and unique! You will need it to sign transactions with this account. You can recover this account using this password together with the backup file (generated in the next step).": "このパスワードは、秘密鍵を暗号化するために使用されます。それは強くてユニークでなければなりません！このパスワードは、あなたの秘密鍵を暗号化するために使用されます。このアカウントでの取引に署名するために必要になります。このパスワードとバックアップファイル(次のステップで生成された)を使用して、このアカウントを復旧することができます。",
   "This will apply to any future use of this account as stored on this browser. Ensure that you securely store this new password and that it is strong and unique to the account.": "これは、このブラウザに保存されているこのアカウントの将来の使用に適用されます。この新しいパスワードを安全に保存し、アカウントに固有の強力なパスワードであることを確認してください。",
   "Transfer": "送信",
+  "Transfer to exchange address is not supported yet": "ヒント: Exchange アドレスへの転送は、現時点ではサポートされていません。",
   "Type here what you would like your address to contain. This tool will generate the keys and show the associated addresses that best match your search. You can use \"?\" as a wildcard for a character.": "ここに、あなたのアドレスを含むようにしたいものを入力してください。このツールはキーを生成し、検索に最も適した関連するアドレスを表示します。文字のワイルドカードとして「?」を使用することができます。",
   "Type the amount you want to transfer. Note that you can select the unit on the right e.g sending 1 milli is equivalent to sending 0.001.": "送金したい金額を入力します。右側の単位を選択することができます。例えば1ミリを送信すると0.001を送信するのと同じです。",
   "Type the name of this Asset. This name will be used across all the apps. It can be edited later on.": "このアセットの名前を入力します。この名前はすべてのアプリで使用されます。後で編集することができます。",

@@ -4,15 +4,15 @@
 import type { DeriveBalancesAll } from '@polkadot/api-derive/types';
 import type { AccountInfoWithProviders, AccountInfoWithRefCount } from '@polkadot/types/interfaces';
 import type { BN } from '@polkadot/util';
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { checkAddress } from '@polkadot/phishing';
 import { useApi, useCall } from '@polkadot/react-hooks';
 import { Available } from '@polkadot/react-query';
 import { BN_HUNDRED, BN_ZERO, isFunction, nextTick } from '@polkadot/util';
-
+import { Button, ToggleGroup } from '@polkadot/react-components';
 import InputAddress from '../InputAddress/index.js';
+import InputAddressSimple from '../InputAddressSimple.js';
 import InputBalance from '../InputBalance.js';
 import MarkError from '../MarkError.js';
 import MarkWarning from '../MarkWarning.js';
@@ -21,6 +21,7 @@ import { styled } from '../styled.js';
 import Toggle from '../Toggle.js';
 import { useTranslation } from '../translate.js';
 import TxButton from '../TxButton.js';
+import Banner from './Banner.js';
 
 interface Props {
   className?: string;
@@ -47,6 +48,7 @@ async function checkPhishing (_senderId: string | null, recipientId: string | nu
 }
 
 function Transfer ({ className = '', onClose, recipientId: propRecipientId, senderId: propSenderId }: Props): React.ReactElement<Props> {
+  
   const { t } = useTranslation();
   const { api } = useApi();
   const [amount, setAmount] = useState<BN | undefined>(BN_ZERO);
@@ -59,11 +61,14 @@ function Transfer ({ className = '', onClose, recipientId: propRecipientId, send
   const [[, recipientPhish], setPhishing] = useState<[string | null, string | null]>([null, null]);
   const balances = useCall<DeriveBalancesAll>(api.derive.balances?.all, [propSenderId || senderId]);
   const accountInfo = useCall<AccountInfoWithProviders | AccountInfoWithRefCount>(api.query.system.account, [propSenderId || senderId]);
-
+  const [intentIndex, setIntentIndex] = useState(0);
+  const intentOptions = useRef([
+    { text: t<string>('DBC_Mainnet'), value: 'DBC' },
+    { text: t<string>('DBC_EVM'), value: 'EVM' }
+  ]);
   useEffect((): void => {
     const fromId = propSenderId || senderId as string;
     const toId = propRecipientId || recipientId as string;
-
     if (balances && balances.accountId?.eq(fromId) && fromId && toId && api.call.transactionPaymentApi && api.tx.balances) {
       nextTick(async (): Promise<void> => {
         try {
@@ -107,7 +112,7 @@ function Transfer ({ className = '', onClose, recipientId: propRecipientId, send
       size='large'
     >
       <Modal.Content>
-        <div className={className}>
+        <div className={`${className} Add_EVM_TS`}>
           <Modal.Columns hint={t<string>('The transferred balance will be subtracted (along with fees) from the sender account.')}>
             <InputAddress
               defaultValue={propSenderId}
@@ -123,7 +128,15 @@ function Transfer ({ className = '', onClose, recipientId: propRecipientId, send
               type='account'
             />
           </Modal.Columns>
-          <Modal.Columns hint={t<string>('The beneficiary will have access to the transferred fees when the transaction is included in a block.')}>
+          <Button.Group>
+            <ToggleGroup
+              onChange={setIntentIndex}
+              options={intentOptions.current}
+              value={intentIndex}
+            />
+          </Button.Group>
+          <Modal.ColumnsNew show={intentIndex == 0 ? true : false} hint={t<string>('The beneficiary will have access to the transferred fees when the transaction is included in a block.')}>
+
             <InputAddress
               defaultValue={propRecipientId}
               isDisabled={!!propRecipientId}
@@ -137,10 +150,21 @@ function Transfer ({ className = '', onClose, recipientId: propRecipientId, send
               onChange={setRecipientId}
               type='allPlus'
             />
-            {recipientPhish && (
-              <MarkError content={t<string>('The recipient is associated with a known phishing site on {{url}}', { replace: { url: recipientPhish } })} />
-            )}
-          </Modal.Columns>
+          </Modal.ColumnsNew>
+          <Modal.ColumnsNew show={intentIndex == 1 ? true : false} hint={t<string>('The beneficiary will have access to the transferred fees when the transaction is included in a block.')}>
+            <Banner type='warning'>
+              <p>{t<string>('Transfer to exchange address is not supported yet')}</p>
+            </Banner>
+            <InputAddressSimple
+              defaultValue={'0x0000000000000000000000000000000000000000'}
+              autoFocus
+              label={t<string>('send to address')}
+              noConvert
+              onChange={setRecipientId}
+            />
+          </Modal.ColumnsNew>
+
+
           <Modal.Columns hint={t<string>('If the recipient account is new, the balance needs to be more than the existential deposit. Likewise if the sending account balance drops below the same value, the account will be removed from the state.')}>
             {canToggleAll && isAll
               ? (
@@ -233,6 +257,9 @@ function Transfer ({ className = '', onClose, recipientId: propRecipientId, send
 }
 
 const StyledModal = styled(Modal)`
+  .Add_EVM_TS .ui--ToggleGroup{
+    padding-left: 2rem;
+  }
   .balance {
     margin-bottom: 0.5rem;
     text-align: right;

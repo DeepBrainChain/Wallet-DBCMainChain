@@ -11,6 +11,7 @@ import ErrorBoundary from '../ErrorBoundary.js';
 import { styled } from '../styled.js';
 import Actions from './Actions.js';
 import Columns from './Columns.js';
+import ColumnsNew from './Columns_new.js';
 import Content from './Content.js';
 import Header from './Header.js';
 
@@ -124,10 +125,12 @@ const Modal = React.memo(ModalBase) as unknown as typeof ModalBase & {
   Actions: typeof Actions;
   Columns: typeof Columns;
   Content: typeof Content;
+  ColumnsNew: typeof ColumnsNew;
 };
 
 Modal.Actions = Actions;
 Modal.Columns = Columns;
+Modal.ColumnsNew = ColumnsNew;
 Modal.Content = Content;
 
 export default Modal;

@@ -835,6 +835,7 @@
   "Transfer an amount from a specific account into a parachain.": "Transfer sejumlah uang dari akun tertentu ke dalam parachain.",
   "Transfer the full account balance, reap the sender": "Transfer saldo akun penuh, tuai pengirimnya",
   "Transfer to chain": "Transfer ke chain",
+  "Transfer to exchange address is not supported yet": "Tip: Mentransfer ke alamat penukaran tidak didukung untuk saat ini.",
   "Transfer to parachain": "Transfer ke parachain",
   "Transfer with account keep-alive checks": "Transfer dengan cek akun keep-alive",
   "Translate": "Menterjemahkan",
