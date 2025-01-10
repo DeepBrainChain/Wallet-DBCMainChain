@@ -1102,7 +1102,7 @@
   "Transfer an amount from a specific account into a parachain.": "Trasferisci fondi da un account specifico ad una parachain",
   "Transfer the full account balance, reap the sender": "Trasferisci tutto il saldo",
   "Transfer to chain": "Trasfersici alla chain",
-  "Transfer to exchange address is not supported yet": "Suggerimento: al momento il trasferimento all'indirizzo di scambio non è supportato.",
+  "Transfer to exchange address is not supported yet": "Suggerimento: al momento il trasferimento a un indirizzo di scambio non è supportato, altrimenti DBC andrà perso",
   "Transfer to parachain": "Trasferisci alla parachain",
   "Transfer with account keep-alive checks": "Trasferimenti con check keep-alive",
   "Translate": "Traduci",

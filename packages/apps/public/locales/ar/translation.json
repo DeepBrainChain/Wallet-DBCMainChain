@@ -751,7 +751,7 @@
   "To council": "إلى المجلس",
   "To ensure optimal fund security using the same stash/controller is strongly discouraged, but not forbidden.": ".لضمان الحصول على أفضل أمن للتمويل باستخدام نفس وحدة التحكم/وحدة التخزين، يتم تثبيط هذا الأمان بشدة، ولكنه لا يمنع استخدامه",
   "Transfer": "تحويل",
-  "Transfer to exchange address is not supported yet": "نصيحة: التحويل إلى عنوان التبادل غير مدعوم في الوقت الحالي.",
+  "Transfer to exchange address is not supported yet": "نصيحة: لا يتم دعم التحويل إلى عنوان تبادل في الوقت الحالي، وإلا فسيتم فقد DBC",
   "Translate": "ترجم",
   "Treasury overview": "نظرة عامة على الخزينة",
   "Type here what you would like your address to contain. This tool will generate the keys and show the associated addresses that best match your search. You can use \"?\" as a wildcard for a character.": "اكتب هنا ما تريد أن يحتوي عليه عنوانك. ستقوم هذه الأداة بإنشاء المفاتيح وإظهار العناوين المرتبطة التي تتطابق مع بحثك على أفضل نحو. يمكنك استخدام \"؟\" كحرف بدل للشخصية",

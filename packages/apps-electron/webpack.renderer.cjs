@@ -27,7 +27,7 @@ module.exports = merge(
         }]
       }),
       new HtmlWebpackPlugin({
-        PAGE_TITLE: 'DBC Wallet Protal',
+        PAGE_TITLE: 'DBC Wallet',
         minify: false,
         template: path.join(context, '../apps/public/index.html')
       })

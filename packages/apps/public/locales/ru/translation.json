@@ -778,7 +778,7 @@
   "To ensure optimal fund security using the same stash/controller is strongly discouraged, but not forbidden.": "Для обеспечения оптимальной безопасности фонда использование одного и того же тайника/контроллера категорически не рекомендуется, но и не запрещено.",
   "Transfer": "Перевести",
   "Transfer the full account balance, reap the sender": "Передать весь баланс, с удалением отправителя",
-  "Transfer to exchange address is not supported yet": "Совет: Перенос на адрес обмена в настоящее время не поддерживается.",
+  "Transfer to exchange address is not supported yet": "Внимание: переводы на адреса бирж временно не поддерживаются, так как это может привести к потере DBC",
   "Transfer with account keep-alive checks": "Перевод с проверками \"keep-alive\" для аккаунта",
   "Translate": "Перевод",
   "Treasury overview": "Обзор сокровищницы",

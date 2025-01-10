@@ -807,7 +807,7 @@
   "Transfer": "হস্তান্তর",
   "Transfer an amount from a specific account into a parachain.": "একটি নির্দিষ্ট অ্যাকাউন্ট থেকে একটি প্যারাচেইনে কিছু পরিমাণ অর্থ স্থানান্তর করুন।",
   "Transfer to chain": "চেইনে হস্তান্তর",
-  "Transfer to exchange address is not supported yet": "টিপ: বিনিময় ঠিকানায় স্থানান্তর আপাতত সমর্থিত নয়৷",
+  "Transfer to exchange address is not supported yet": "পরামর্শ: এই মুহূর্তে এক্সচেঞ্জ ঠিকানায় স্থানান্তর করা সমর্থিত নয়, অন্যথায় DBC হারিয়ে যাবে।",
   "Transfer to parachain": "প্যারাচেইনে হস্তান্তর",
   "Transfer with account keep-alive checks": "একাউন্ট কিপ-লাইভ চেক সহ স্থানান্তর",
   "Translate": "অনুবাদ",

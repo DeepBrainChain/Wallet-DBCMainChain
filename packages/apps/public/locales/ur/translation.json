@@ -808,7 +808,7 @@
   "Transfer": "منتقلی",
   "Transfer an amount from a specific account into a parachain.": "ایک مخصوص اکاؤنٹ سے رقم کو پیراچین میں منتقل کریں",
   "Transfer to chain": "چین میں منتقل کریں",
-  "Transfer to exchange address is not supported yet": "ٹپ: ایکسچینج ایڈریس پر منتقلی فی الحال تعاون یافتہ نہیں ہے۔",
+  "Transfer to exchange address is not supported yet": "ٹپ: ایکسچینج ایڈریس پر منتقلی اس وقت تعاون یافتہ نہیں ہے، ورنہ DBC ضائع ہو جائے گا۔",
   "Transfer to parachain": "پیراچین میں منتقل کریں",
   "Transfer with account keep-alive checks": "اکاؤنٹ کیپ ۔ الائیو چیک کے ساتھ ٹرانسفر کریں",
   "Translate": "ترجمہ",

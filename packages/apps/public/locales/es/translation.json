@@ -620,7 +620,7 @@
   "To council": "Al consejo",
   "To ensure optimal fund security using the same stash/controller is strongly discouraged, but not forbidden.": "Se desaconseja encarecidamente, pero no se prohíbe, asegurar una óptima seguridad de los fondos utilizando la misma stash/controller.",
   "Transfer": "Transferir",
-  "Transfer to exchange address is not supported yet": "Consejo: Por el momento no se admite la transferencia a una dirección de intercambio.",
+  "Transfer to exchange address is not supported yet": "Consejo: La transferencia a una dirección de intercambio no está admitida en este momento, de lo contrario se perderá el DBC",
   "Translate": "Traducir",
   "Treasury overview": "Visión general de la Tesorería",
   "Type here what you would like your address to contain. This tool will generate the keys and show the associated addresses that best match your search. You can use \"?\" as a wildcard for a character.": "Escriba aquí lo que quiere que contenga su dirección. Esta herramienta generará las claves y mostrará las direcciones asociadas que mejor se ajusten a su búsqueda. Puede usar \"?\" como comodín para un carácter.",

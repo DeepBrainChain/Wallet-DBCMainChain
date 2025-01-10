@@ -22,7 +22,7 @@ module.exports = merge(
     plugins: [
       new SubresourceIntegrityPlugin(),
       new HtmlWebpackPlugin({
-        PAGE_TITLE: 'DBC Wallet Protal',
+        PAGE_TITLE: 'DBC Wallet',
         minify: false,
         template: path.join(context, `${hasPublic ? 'public/' : ''}index.html`)
       })

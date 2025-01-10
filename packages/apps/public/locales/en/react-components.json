@@ -52,7 +52,7 @@
   "This operation does not remove the history of the account from the chain, nor any associated funds from the account. The forget operation only limits your access to the address on this browser.": "This operation does not remove the history of the account from the chain, nor any associated funds from the account. The forget operation only limits your access to the address on this browser.",
   "This operation does not remove the history of the contract from the chain, nor any associated funds from its account. The forget operation only limits your access to the contract on this browser.": "This operation does not remove the history of the contract from the chain, nor any associated funds from its account. The forget operation only limits your access to the contract on this browser.",
   "Transfer the full account balance, reap the sender": "Transfer the full account balance, reap the sender",
-  "Transfer to exchange address is not supported yet": "Tip: Transfer to exchange address is not supported yet",
+  "Transfer to exchange address is not supported yet": "Tip: Transfers to exchange addresses are temporarily not supported, as it may result in the loss of DBC",
   "Transfer with account keep-alive checks": "Transfer with account keep-alive checks",
   "Unbonding {{value}}": "Unbonding {{value}}",
   "Uncaught error. Something went wrong with the query and rendering of this component. Please supply all the details below when logging an issue, it may help in tracing the cause.": "Uncaught error. Something went wrong with the query and rendering of this component. Please supply all the details below when logging an issue, it may help in tracing the cause.",

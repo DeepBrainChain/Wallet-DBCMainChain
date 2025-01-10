@@ -811,7 +811,7 @@
   "Transfer": "转账",
   "Transfer an amount from a specific account into a parachain.": "将一笔款项从一个特定的账户转到一个平行链账户",
   "Transfer to chain": "给链转账",
-  "Transfer to exchange address is not supported yet": "提示：暂时不支持转到交易所地址",
+  "Transfer to exchange address is not supported yet": "提示：暂时不支持转到交易所地址，否则会导致DBC丢失",
   "Transfer to parachain": "给平行链转账",
   "Transfer with account keep-alive checks": "用保持活跃检查的账户转账",
   "Translate": "翻译",

@@ -18,7 +18,7 @@ module.exports = merge(
     },
     plugins: [
       new HtmlWebpackPlugin({
-        PAGE_TITLE: 'DBC Wallet Protal',
+        PAGE_TITLE: 'DBC Wallet',
         inject: true,
         template: path.join(__dirname, 'public/index.html')
       })
