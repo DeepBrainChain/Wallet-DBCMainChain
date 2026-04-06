@@ -557,6 +557,9 @@ export const prodChains: Omit<EndpointOption, 'teleport'>[] = [
     // text: t("rpc.dbc", "DBC Mainnet", { ns: "apps-config" }),
     providers: {
       "DBC Mainnet": "wss://info1.dbcwallet.io",
+      "DBC RPC1": "wss://rpc1.dbcwallet.io",
+      "DBC RPC3": "wss://rpc3.dbcwallet.io",
+      "DBC RPC": "wss://rpc.dbcwallet.io",
     },
     ui: {
       color: 'linear-gradient(-90deg, #9400D3 0%, #5A5CA9 50%, #00454a 100%)',

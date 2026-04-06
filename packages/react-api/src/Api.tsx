@@ -227,6 +227,26 @@ async function getLightProvider (chain: string): Promise<ScProvider> {
 /**
  * @internal
  */
+// DBC fallback RPC endpoints for auto-switching
+const DBC_FALLBACK_ENDPOINTS = [
+  'wss://info1.dbcwallet.io',
+  'wss://rpc1.dbcwallet.io',
+  'wss://rpc3.dbcwallet.io',
+  'wss://rpc.dbcwallet.io'
+];
+
+function getWsEndpoints (apiUrl: string): string | string[] {
+  // If user selected a DBC endpoint, provide all fallbacks for auto-switching
+  if (apiUrl.includes('dbcwallet.io')) {
+    // Put user's selected endpoint first, then add others
+    const endpoints = [apiUrl, ...DBC_FALLBACK_ENDPOINTS.filter((e) => e !== apiUrl)];
+
+    return endpoints;
+  }
+
+  return apiUrl;
+}
+
 async function createApi (apiUrl: string, signer: ApiSigner, onError: (error: unknown) => void): Promise<Record<string, Record<string, string>>> {
   const types = getDevTypes();
   const isLight = apiUrl.startsWith('light://');
@@ -234,7 +254,7 @@ async function createApi (apiUrl: string, signer: ApiSigner, onError: (error: un
   try {
     const provider = isLight
       ? await getLightProvider(apiUrl.replace('light://', ''))
-      : new WsProvider(apiUrl);
+      : new WsProvider(getWsEndpoints(apiUrl));
 
     statics.api = new ApiPromise({
       provider,
