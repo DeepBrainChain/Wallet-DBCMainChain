@@ -1,0 +1,44 @@
+diff --git a/cjs/env/expect.js b/cjs/env/expect.js
+index 398dd28d34dfeb563e86ac63c75f571976216651..f1259d4286c408e0a529c94f8a43eeace0745ddb 100644
+--- a/cjs/env/expect.js
++++ b/cjs/env/expect.js
+@@ -180,7 +180,7 @@ function expect() {
+             not: (0, util_js_1.enhanceObj)({
+                 toBe: (other) => node_assert_1.strict.notStrictEqual(value, other),
+                 toBeDefined: () => node_assert_1.strict.ok(value === undefined),
+-                toBeNull: (value) => node_assert_1.strict.ok(value !== null),
++                toBeNull: () => node_assert_1.strict.ok(value !== null),
+                 toBeUndefined: () => node_assert_1.strict.ok(value !== undefined),
+                 toEqual: (other) => node_assert_1.strict.notDeepEqual(value, other),
+                 toHaveBeenCalled: () => node_assert_1.strict.ok(!value?.mock?.calls.length),
+@@ -195,7 +195,7 @@ function expect() {
+             toBeFalsy: () => node_assert_1.strict.ok(!value),
+             // eslint-disable-next-line @typescript-eslint/ban-types
+             toBeInstanceOf: (Clazz) => assertInstanceOf(value, Clazz),
+-            toBeNull: (value) => node_assert_1.strict.ok(value === null),
++            toBeNull: () => node_assert_1.strict.ok(value === null),
+             toBeTruthy: () => node_assert_1.strict.ok(value),
+             toBeUndefined: () => node_assert_1.strict.ok(value === undefined),
+             toEqual: (other) => node_assert_1.strict.deepEqual(value, other),
+diff --git a/env/expect.js b/env/expect.js
+index 5de65cc3061706eb60846ff8ff6722b4e5424f2a..adf0e0eb5cbb7212bea32b5fa9a78d0077baaf82 100644
+--- a/env/expect.js
++++ b/env/expect.js
+@@ -177,7 +177,7 @@ export function expect() {
+             not: enhanceObj({
+                 toBe: (other) => assert.notStrictEqual(value, other),
+                 toBeDefined: () => assert.ok(value === undefined),
+-                toBeNull: (value) => assert.ok(value !== null),
++                toBeNull: () => assert.ok(value !== null),
+                 toBeUndefined: () => assert.ok(value !== undefined),
+                 toEqual: (other) => assert.notDeepEqual(value, other),
+                 toHaveBeenCalled: () => assert.ok(!value?.mock?.calls.length),
+@@ -192,7 +192,7 @@ export function expect() {
+             toBeFalsy: () => assert.ok(!value),
+             // eslint-disable-next-line @typescript-eslint/ban-types
+             toBeInstanceOf: (Clazz) => assertInstanceOf(value, Clazz),
+-            toBeNull: (value) => assert.ok(value === null),
++            toBeNull: () => assert.ok(value === null),
+             toBeTruthy: () => assert.ok(value),
+             toBeUndefined: () => assert.ok(value === undefined),
+             toEqual: (other) => assert.deepEqual(value, other),

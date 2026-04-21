@@ -1944,13 +1944,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@polkadot/dev-test@npm:^0.75.7":
+"@polkadot/dev-test@npm:0.75.7":
   version: 0.75.7
   resolution: "@polkadot/dev-test@npm:0.75.7"
   dependencies:
     jsdom: ^22.0.0
     tslib: ^2.5.2
   checksum: 5ed5fa7682d1a8cdf07662560d7f18df4cf173a2f115571c440c0dc8570bbbd096380f1332cf784f64f342e3fc1d67d4196e29ff24bf08974bc937b9bc5f38d9
+  languageName: node
+  linkType: hard
+
+"@polkadot/dev-test@patch:@polkadot/dev-test@npm%3A0.75.7#./.yarn/patches/@polkadot-dev-test-npm-0.75.7-3420497f55.patch::locator=polkadot-apps%40workspace%3A.":
+  version: 0.75.7
+  resolution: "@polkadot/dev-test@patch:@polkadot/dev-test@npm%3A0.75.7#./.yarn/patches/@polkadot-dev-test-npm-0.75.7-3420497f55.patch::version=0.75.7&hash=e4f0fa&locator=polkadot-apps%40workspace%3A."
+  dependencies:
+    jsdom: ^22.0.0
+    tslib: ^2.5.2
+  checksum: f52c55d01fabcf0865d7c3ccf0bf1a4f1820c8195069dd559b4a3a9bd2a1956bb4491f54c0a47d9e93e0b766fae352ff9f1330509ef7f891c4e7cd9dcf74bb6f
   languageName: node
   linkType: hard
 

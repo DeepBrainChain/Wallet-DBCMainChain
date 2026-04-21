@@ -4,7 +4,16 @@
 import type { DropzoneRef } from 'react-dropzone';
 
 import React, { createRef, useCallback, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
+// NOTE: react-dropzone@14 ships a UMD CJS bundle whose named exports don't
+// survive Node's ESM interop (`import { useDropzone } from 'react-dropzone'`
+// breaks module loading for any consumer under node --test, including every
+// spec that transitively imports react-components). Use default-then-destructure
+// so it works in both Node (specs) and the bundler.
+import reactDropzonePkg from 'react-dropzone';
+
+const { useDropzone } = reactDropzonePkg as unknown as {
+  useDropzone: typeof import('react-dropzone').useDropzone;
+};
 
 import { formatNumber, hexToU8a, isHex, u8aToString } from '@polkadot/util';
 

@@ -77,7 +77,7 @@ describe('BannerBrowserWallet component', () => {
   it('renders the dismiss button when not dismissed', () => {
     render(<BannerBrowserWallet />);
 
-    expect(screen.getByTestId('dismiss-browser-wallet-banner')).not.toBe(null);
+    expect(screen.getByTestId('dismiss-browser-wallet-banner')).not.toBeNull();
   });
 
   it('renders nothing when already dismissed', () => {
@@ -93,7 +93,7 @@ describe('BannerBrowserWallet component', () => {
 
     const btn = container.querySelector('[data-testid="dismiss-browser-wallet-banner"]');
 
-    expect(btn).not.toBe(null);
+    expect(btn).not.toBeNull();
     fireEvent.click(btn!);
 
     // After dismiss, component returns null — container should be empty
@@ -106,6 +106,6 @@ describe('BannerBrowserWallet component', () => {
     const { container } = render(<BannerBrowserWallet />);
 
     expect(container.innerHTML).toBe('');
-    expect(container.querySelector('[data-testid="dismiss-browser-wallet-banner"]')).toBe(null);
+    expect(container.querySelector('[data-testid="dismiss-browser-wallet-banner"]')).toBeNull();
   });
 });
