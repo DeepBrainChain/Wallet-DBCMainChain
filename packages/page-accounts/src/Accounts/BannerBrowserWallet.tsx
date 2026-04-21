@@ -3,10 +3,7 @@
 
 import React, { useCallback, useState } from 'react';
 
-import { Icon, styled } from '@polkadot/react-components';
-
 import { useTranslation } from '../translate.js';
-import Banner from './Banner.js';
 
 const DISMISS_KEY = 'dbc:browserWalletBannerDismissed';
 
@@ -25,9 +22,9 @@ function writeDismissed (): void {
   } catch { /* storage unavailable — silently ignore */ }
 }
 
-// Shown once when the user can create/import wallets in-browser (no extension).
-// Dismissible; remembers dismissal in localStorage so returning users don't see
-// it again. Exposes a private reset path for tests (see BannerBrowserWallet.spec).
+// Self-contained banner (no @polkadot/react-components dep) so the unit test
+// can run without pulling in the full react-components tree. Visual style
+// mirrors the existing Banner.tsx warning variant.
 function BannerBrowserWallet (): React.ReactElement | null {
   const { t } = useTranslation();
   const [dismissed, setDismissed] = useState<boolean>(readDismissed());
@@ -42,41 +39,49 @@ function BannerBrowserWallet (): React.ReactElement | null {
   }
 
   return (
-    <StyledWrap>
-      <Banner type='warning'>
-        <DismissButton
-          aria-label={t<string>('Dismiss')}
-          data-testid='dismiss-browser-wallet-banner'
-          onClick={onDismiss}
-          role='button'
-          tabIndex={0}
-        >
-          <Icon icon='times' />
-        </DismissButton>
-        <p>
-          {t<string>('You can now create or import a wallet directly in this browser — no extension required. Keys are encrypted with your password and stored in browser localStorage. Suitable for small amounts or testing; for larger balances please use an extension (Polkadot.js / Talisman) or a hardware wallet.')}
-        </p>
-      </Banner>
-    </StyledWrap>
+    <article className='warning centered' style={wrapperStyle}>
+      <button
+        aria-label={t<string>('Dismiss')}
+        data-testid='dismiss-browser-wallet-banner'
+        onClick={onDismiss}
+        style={dismissStyle}
+        type='button'
+      >
+        ×
+      </button>
+      <p style={paragraphStyle}>
+        {t<string>('You can now create or import a wallet directly in this browser — no extension required. Keys are encrypted with your password and stored in browser localStorage. Suitable for small amounts or testing; for larger balances please use an extension (Polkadot.js / Talisman) or a hardware wallet.')}
+      </p>
+    </article>
   );
 }
 
-const StyledWrap = styled.div`
-  position: relative;
-`;
+const wrapperStyle: React.CSSProperties = {
+  position: 'relative',
+  padding: '0.75rem 2.25rem 0.75rem 1rem',
+  margin: '0.5rem 0',
+  background: 'rgba(255, 196, 0, 0.12)',
+  borderLeft: '4px solid #f0ad4e',
+  borderRadius: '4px'
+};
 
-const DismissButton = styled.span`
-  position: absolute;
-  right: 1.25rem;
-  top: 0.75rem;
-  cursor: pointer;
-  opacity: 0.6;
+const paragraphStyle: React.CSSProperties = {
+  margin: 0,
+  lineHeight: 1.5
+};
 
-  &:hover,
-  &:focus {
-    opacity: 1;
-  }
-`;
+const dismissStyle: React.CSSProperties = {
+  position: 'absolute',
+  right: '0.5rem',
+  top: '0.25rem',
+  background: 'transparent',
+  border: 'none',
+  cursor: 'pointer',
+  fontSize: '1.25rem',
+  lineHeight: 1,
+  opacity: 0.6,
+  padding: '0.25rem 0.5rem'
+};
 
 export default React.memo(BannerBrowserWallet);
 
