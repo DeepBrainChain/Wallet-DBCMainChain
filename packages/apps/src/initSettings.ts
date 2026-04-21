@@ -61,7 +61,14 @@ function getApiUrl (): string {
 // There cannot be a Substrate Connect light client default (expect only jrpc EndpointType)
 const apiUrl = getApiUrl();
 
+// DBC: default local in-browser account storage to 'on' (first-run only).
+// Users can still toggle it off in Settings → General. Existing users' choice
+// is preserved — we only seed the default when no preference is stored yet.
+const storedSettings = (store.get('settings') as Record<string, unknown> | null) ?? {};
+const storageDefault =
+  typeof storedSettings.storage === 'string' ? (storedSettings.storage as string) : 'on';
+
 // set the default as retrieved here
-settings.set({ apiUrl });
+settings.set({ apiUrl, storage: storageDefault });
 
 networkOrUrl(apiUrl);
