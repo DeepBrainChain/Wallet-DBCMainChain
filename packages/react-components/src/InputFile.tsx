@@ -7,13 +7,28 @@ import React, { createRef, useCallback, useState } from 'react';
 // NOTE: react-dropzone@14 ships a UMD CJS bundle whose named exports don't
 // survive Node's ESM interop (`import { useDropzone } from 'react-dropzone'`
 // breaks module loading for any consumer under node --test, including every
-// spec that transitively imports react-components). Use default-then-destructure
-// so it works in both Node (specs) and the bundler.
-import reactDropzonePkg from 'react-dropzone';
+// spec that transitively imports react-components).
+// Accept either the ESM shape (useDropzone at top level) or the CJS default
+// (useDropzone under .default), and fail loud at module-load time if neither
+// is present — safer than silently exploding on first drag-and-drop.
+import * as reactDropzoneNs from 'react-dropzone';
 
-const { useDropzone } = reactDropzonePkg as unknown as {
-  useDropzone: typeof import('react-dropzone').useDropzone;
+type UseDropzoneFn = typeof import('react-dropzone').useDropzone;
+
+const rd = reactDropzoneNs as unknown as {
+  useDropzone?: UseDropzoneFn;
+  default?: { useDropzone?: UseDropzoneFn };
 };
+const useDropzoneResolved = rd.useDropzone ?? rd.default?.useDropzone;
+
+if (!useDropzoneResolved) {
+  throw new Error(
+    '[react-components] react-dropzone.useDropzone could not be resolved. ' +
+      'Check the installed react-dropzone version is compatible with this import pattern.'
+  );
+}
+
+const useDropzone: UseDropzoneFn = useDropzoneResolved;
 
 import { formatNumber, hexToU8a, isHex, u8aToString } from '@polkadot/util';
 

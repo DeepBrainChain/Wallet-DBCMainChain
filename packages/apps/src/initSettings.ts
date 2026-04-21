@@ -66,7 +66,7 @@ const apiUrl = getApiUrl();
 // is preserved — we only seed the default when no preference is stored yet.
 const storedSettings = (store.get('settings') as Record<string, unknown> | null) ?? {};
 const storageDefault =
-  typeof storedSettings.storage === 'string' ? (storedSettings.storage as string) : 'on';
+  typeof storedSettings.storage === 'string' ? storedSettings.storage : 'on';
 
 // set the default as retrieved here
 settings.set({ apiUrl, storage: storageDefault });
