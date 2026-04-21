@@ -25,6 +25,7 @@ import Qr from '../modals/Qr.js';
 import { useTranslation } from '../translate.js';
 import { SORT_CATEGORY, sortAccounts } from '../util.js';
 import Account from './Account.js';
+import BannerBrowserWallet from './BannerBrowserWallet.js';
 import BannerClaims from './BannerClaims.js';
 import BannerExtension from './BannerExtension.js';
 import Summary from './Summary.js';
@@ -144,7 +145,11 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
   );
 
   const canStoreAccounts = useMemo(
-    () => isElectron || (!isIpfs && settings.get().storage === 'on'),
+    // DBC: always expose Create/Import buttons on the accounts page so users
+    // can create or restore a wallet in-browser without requiring an extension.
+    // Storage is enabled by default in apps/initSettings.ts; IPFS hosts still
+    // opt out (same upstream safety rail).
+    () => isElectron || !isIpfs,
     [isElectron, isIpfs]
   );
 
@@ -306,6 +311,7 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
         />
       )}
       <BannerExtension />
+      {canStoreAccounts && <BannerBrowserWallet />}
       <BannerClaims />
       <Summary balance={balances.summary} />
       <SummaryBox className='header-box'>
